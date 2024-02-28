@@ -11,6 +11,10 @@ pip install -r requirements.txt
 
 RepoHyper is a two-stage model. The first stage is a search-then-expand algorithm on Repo-level Semantic Graph (RSG) then use GNN link predictor that reranks the retrieved results from KNN search and graph expansion. The second stage is any code LLM model that takes the retrieved context and predicts the next line of code.
 
+## Checkpoints
+We provide the checkpoints for the GNN model [here](https://ai4code.blob.core.windows.net/repohyper/model_10.pt). The GNN model is trained on the RepoBench-R dataset with gold labels. We also provide [RepoBench-R RGSs](https://ai4code.blob.core.windows.net/repohyper/repos_graphs_labeled_link_with_called_imported_edges) to reproduce the results.
+
+
 ## Usage
 
 ### Data preparation
