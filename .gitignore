@@ -1,0 +1,13 @@
+data/stack-repo
+data/perplexity/repos/*
+data/perplexity/flatten_texts/*
+**/__pycache__/
+dump
+repos/
+scripts/experiments/checkpoints/*
+checkpoints/*
+contexts_files.json
+pycg.json
+data/repobench
+test.ipynb
+wandb/

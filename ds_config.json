@@ -1,0 +1,25 @@
+{   "train_batch_size": 1,
+    "train_micro_batch_size_per_gpu": 1,
+    "optimizer": {
+        "type": "Adam",
+        "params": {
+          "lr": 0.01,
+          "weight_decay": 5e-4
+        }
+    },
+    "zero_optimization": {
+        "stage": 3,
+        "offload_optimizer": {
+            "device": "cpu",
+            "pin_memory": true
+        },
+        "allgather_partitions": true,
+        "allgather_bucket_size": 2e8,
+        "overlap_comm": true,
+        "reduce_scatter": true,
+        "reduce_bucket_size": 2e8,
+        "contiguous_gradients": true
+    },
+    "gradient_accumulation_steps": 1,
+    "steps_per_print": 1e5
+}

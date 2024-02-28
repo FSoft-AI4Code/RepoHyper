@@ -1,0 +1,9 @@
+{
+"Similar Name": {"RepoHyper": 0.61, "SemanticSearch": 0.71},
+"Parent Class": {"RepoHyper": 0.75, "SemanticSearch": 0.61},
+"Child Class": {"RepoHyper": 0.73, "SemanticSearch": 0.63},
+"Sibling": {"RepoHyper": 0.61, "SemanticSearch": 0.46},
+"Import of Sibling": {"RepoHyper": 0.41, "SemanticSearch": 0.24},
+"Import of Similar Name": {"RepoHyper": 0.56, "SemanticSearch": 0.35},
+"Import of Parent Class": {"RepoHyper": 0.48, "SemanticSearch": 0.31}
+}
