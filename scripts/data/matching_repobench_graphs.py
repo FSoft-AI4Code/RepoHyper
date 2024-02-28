@@ -11,6 +11,7 @@ from src.repo_graph.search_policy.knn_search import ImportExpandRadius
 from tqdm import tqdm
 from typing import Dict, Any
 from tree_sitter import Language, Parser
+import argparse
 
 PY_LANGUAGE = Language('/datadrive05/huypn16/treesitter-build/python-java.so', 'python')
 parser = Parser()
@@ -23,6 +24,13 @@ settings = ["cross_file_first"]
 cross_file_first_hard = load_data(task, language, "cross_file_first")["train"]["hard"]
 cross_file_first_easy = load_data(task, language, "cross_file_first")["train"]["easy"]
 cross_file_first = cross_file_first_hard + cross_file_first_easy
+
+def args_parse():
+    parser = argparse.ArgumentParser(description='Expand Strategies and assign gold label.')
+    parser.add_argument('--search_policy', type=str, default="knn_pattern", help='Search policy')
+    parser.add_argument('--rsg_path', type=str, help='Repo graphs (RSG) folder path')
+    return parser.parse_args()
+
 def get_function_class_name(code):
     # parse function or class name from repobench context snippet
     if code.startswith("def"):
@@ -268,9 +276,10 @@ if __name__ == "__main__":
     # search_policy = "knn_pattern"
     # search_policy = "knn_radius"
     # search_policy = "import_radius"
-    search_policy = "cosine_radius"
-    # search_policy = "cosine_pattern"
-    repo_names = os.listdir("data/repobench/repos_graphs_unixcoder")
+    # search_policy = "cosine_radius"
+    args = args_parse()
+    search_policy = args.search_policy
+    repo_names = os.listdir(args.rsg_path)
     hit = 0
     miss = 0
     graph_miss = 0

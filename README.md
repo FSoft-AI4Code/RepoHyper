@@ -36,13 +36,13 @@ Now we need to generate embeddings for each node for node embedding as well as c
 python3 -m scripts.data.repo_to_embeddings --repos data/repobench/repos --call-graphs data/repobench/repos_call_graphs --output data/repobench/repos_graphs --num-processes 60
 ```
 
-Final step is labeling which node is the most optimal for predicting next line using gold snippet from repobench dataset. In this step, we also generate the training data for GNN training by extracting the subgraph using KNN search and call graph expansion
+Final step is labeling which node is the most optimal for predicting next line using gold snippet from repobench dataset. In this step, we also generate the training data for GNN training by extracting the subgraph using KNN search and RSG expansion.
 ```bash
-python3 -m scripts.data.matching_repobench_graphs -k 10 -radius 10 --entities data/repobench/repos_graphs --output data/repobench/repos_graphs_labeled 
+python3 -m scripts.data.matching_repobench_graphs -search_policy "knn-pattern" --rsg_path "YOUR RSG PATH" --output data/repobench/repos_graphs_labeled 
 ```
 
 ### Training
-We can train GNN reranker seperately using following script
+We can train GNN linker seperately using following script
 
 ```bash
 CUDA_VISIBLE_DEVICES=0 deepspeed train_gnn.py --deepspeed --deepspeed_config ds_config.json --arch GraphSage --layers 1 --data-path data/repobench/repos_graphs_labeled_cosine_radius_unix --output data/repobench/gnn_model --num-epochs 10 --batch-size 16
