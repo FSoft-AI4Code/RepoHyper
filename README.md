@@ -7,6 +7,18 @@
 
 </div>
 
+## Introduction
+
+We introduce RepoHyper, an novel framework transforming code completion into a seamless end-to-end process for use case on real world repositories. Traditional approaches depend on integrating contexts into Code Language Models (CodeLLMs), often presuming these contexts to be inherently accurate. However, we've identified a gap: the standard benchmarks don't always present relevant contexts.
+
+To address this, RepoHyper proposes in three novel steps:
+
+- Construction of a Code Property Graph, establishing a rich source of context.
+- A novel Search Algorithm for pinpointing the exact context needed.
+- The Expand Algorithm, designed to uncover implicit connections between code elements (akin to the Link Prediction problem on social network mining).
+
+Our comprehensive evaluations reveal that RepoHyper sets a new standard, outperforming other strong baseline on the RepoBench benchmark.
+
 ## Installation
 
 ```bash
