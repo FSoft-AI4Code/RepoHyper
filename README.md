@@ -19,6 +19,8 @@ To address this, RepoHyper proposes in three novel steps:
 
 Our comprehensive evaluations reveal that RepoHyper sets a new standard, outperforming other strong baseline on the RepoBench benchmark.
 
+#### Paper: https://arxiv.org/abs/2403.06095
+
 ## Installation
 
 ```bash
